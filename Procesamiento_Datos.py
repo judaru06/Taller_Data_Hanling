@@ -1,25 +1,20 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+import re
 
 # Leer el archivo CSV
-df = pd.read_csv('datos_MUSIC_3.csv')
-
-# Extraer la tercera columna que contiene la matriz compleja
-matriz_compleja_str = df.iloc[:,2]
-print(f'parte_compleja {type(matriz_compleja_str)}')
-#print(matriz_compleja_str)
-
-# Supongamos que tienes una matriz compleja llamada 'matriz_compleja'
-matriz_compleja = np.array(matriz_compleja_str)
-
-# Separar la parte real e imaginaria de la matriz
+df = pd.read_csv('parte_compleja.csv')
+matriz_compleja_str = df.values
+matriz_compleja = np.zeros(matriz_compleja_str.shape, dtype=complex)
+for i in range(matriz_compleja_str.shape[0]):
+    for j in range(matriz_compleja_str.shape[1]):
+        matriz_compleja[i, j] = complex(matriz_compleja_str[i, j])
 parte_real = np.real(matriz_compleja)
 parte_imaginaria = np.imag(matriz_compleja)
+# Crear un DataFrame de pandas para las partes real e imaginaria
+df_real = pd.DataFrame(parte_real)
+df_imaginaria = pd.DataFrame(parte_imaginaria)
 
-#Imprimir las matrices separadas
-print("Parte Real:")
-print(f'parte_Real {type(parte_real)}')
-print(parte_real[2])
-print("\nParte Imaginaria:")
-print(parte_imaginaria[2])
+# Escribir los DataFrames en archivos CSV
+df_real.to_csv('parte_real.csv', index=False)
+df_imaginaria.to_csv('parte_imaginaria.csv', index=False)
