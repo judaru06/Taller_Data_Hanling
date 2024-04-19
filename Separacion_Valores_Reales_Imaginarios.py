@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 # Carga de la base de datos
-data = pd.read_csv(r'D:\Maestria\Semestre_2\Programacion Cientifica\Taller_Data_Hanling\Datos\music_data_1_angles.csv')
+data = pd.read_csv(r'D:\Maestria\Semestre_2\Programacion Cientifica\Taller_Data_Hanling\Datos\music_data_2_angles.csv')
 
 # Función para parsear los números complejos correctamente
 def parse_complex_numbers_correctly(matrix_str):
