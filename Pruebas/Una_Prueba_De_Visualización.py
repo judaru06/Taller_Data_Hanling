@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # Generar datos de ejemplo para las partes real e imaginaria de la matriz de correlación
 num_antenas = 12
 datos_real = np.random.rand(num_antenas, num_antenas)
-print(datos_real)
+print(type(datos_real))
 datos_imaginarios = np.random.rand(num_antenas, num_antenas)
 
 # Visualización de la parte real de la matriz de correlación como un mapa de calor
